@@ -10,7 +10,7 @@ export default function Footer(){
                 <Nav>
                     <Nav.Link href="#" style={{color: '#DDDDDD'}}>About project</Nav.Link>
                     <Nav.Link href="#" style={{color: '#DDDDDD'}}>Copyright by Azzirr</Nav.Link>
-                    <Nav.Link href="#" style={{color: '#DDDDDD'}}>Github</Nav.Link>
+                    <Nav.Link href="https://github.com/Azzirr" target="_blank" style={{color: '#DDDDDD'}}>Github</Nav.Link>
                     <Nav.Link href="#" style={{color: '#DDDDDD'}}>LinkedIn</Nav.Link>
                     <Nav.Link href="#" style={{color: '#DDDDDD'}}>Check out my other projects</Nav.Link>
                 </Nav>
