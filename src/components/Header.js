@@ -5,6 +5,8 @@ import Dropdown from 'react-bootstrap/Dropdown'
 import InputGroup from 'react-bootstrap/InputGroup'
 import Button from 'react-bootstrap/Button'
 import Form from 'react-bootstrap/Form'
+import Nav from 'react-bootstrap/Nav'
+import Navbar from 'react-bootstrap/Navbar'
 import logo from '../assets/logo.png'
 import shoppingBag from '../assets/shopping-bag.svg'
 import support from '../assets/support.svg'
@@ -60,18 +62,15 @@ export default function Header(){
                 </Col>
             </Row>
             <Row>
-                <Col md={3}>
-                    Category 1
-                </Col>
-                <Col md={3}>
-                    Category 2
-                </Col>
-                <Col md={3}>
-                    Category 3
-                </Col>
-                <Col md={3}>
-                    What's new?
-                </Col>
+                <Navbar expand="sm" bg="light">
+                    <Nav>
+                        <Nav.Link href="#">Men's clothing</Nav.Link>
+                        <Nav.Link href="#">Woman's clothing</Nav.Link>
+                        <Nav.Link href="#">Electronics</Nav.Link>
+                        <Nav.Link href="#">Jewelery</Nav.Link>
+                        <Nav.Link href="#">What's new?</Nav.Link>
+                    </Nav>
+                </Navbar>
             </Row>
         </Container>
     )
