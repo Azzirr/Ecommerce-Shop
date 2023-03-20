@@ -10,7 +10,7 @@ import Navbar from 'react-bootstrap/Navbar'
 import logo from '../assets/logo.png'
 import shoppingBag from '../assets/shopping-bag.svg'
 import support from '../assets/support.svg'
-export default function Header(){
+export default function Header(props){
     return(
         <Container>
             <Row className='pt'>
@@ -23,10 +23,10 @@ export default function Header(){
                                 Sort items
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
-                            <Dropdown.Item>Chapest to expensive</Dropdown.Item>
-                            <Dropdown.Item href="#">Expensive to cheapest</Dropdown.Item>
-                            <Dropdown.Item href="#">A to Z</Dropdown.Item>
-                            <Dropdown.Item href="#">Z to A</Dropdown.Item>
+                            <Dropdown.Item value="cheapestToExpensive">Cheapest to expensive</Dropdown.Item>
+                            <Dropdown.Item value="expensiveToCheapest">Expensive to cheapest</Dropdown.Item>
+                            <Dropdown.Item value="aToZ" >A to Z</Dropdown.Item>
+                            <Dropdown.Item value="zToA">Z to A</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
                 </Col>
@@ -64,7 +64,7 @@ export default function Header(){
             <Row>
                 <Navbar expand="sm" bg="light">
                     <Nav>
-                        <Nav.Link href="#">Men's clothing</Nav.Link>
+                        <Nav.Link>Men's clothing</Nav.Link>
                         <Nav.Link href="#">Woman's clothing</Nav.Link>
                         <Nav.Link href="#">Electronics</Nav.Link>
                         <Nav.Link href="#">Jewelery</Nav.Link>

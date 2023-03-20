@@ -2,26 +2,8 @@ import Container  from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-import { useEffect, useState } from 'react'
 export default function Products(props){
-
-    const [products, setProducts] = useState(null)
-
-    useEffect(() => {
-        fetch(`https://fakestoreapi.com/products/`)
-             .then(response => {
-                if(response.ok){
-                    return response.json()
-                } else {
-                    return Promise.reject(response)
-                }
-             })
-             .then(data => {
-                console.log(data)
-                setProducts(data)                
-            })
-             .catch(err => console.log(err))
-    }, []) 
+    const products = props.products;
     return(
         <Container>
             <Row>
