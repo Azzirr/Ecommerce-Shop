@@ -11,6 +11,10 @@ import logo from '../assets/logo.png'
 import shoppingBag from '../assets/shopping-bag.svg'
 import support from '../assets/support.svg'
 export default function Header(props){
+    function sortCheapestToExpensive(){
+        let products = [{"id": 4, "title": "Test1", "price": "510"}, {"id": 5, "title": "Test2", "price": "333"}]
+        props.setNewProducts(products)
+    }
     return(
         <Container>
             <Row className='pt'>
@@ -23,7 +27,7 @@ export default function Header(props){
                                 Sort items
                         </Dropdown.Toggle>
                         <Dropdown.Menu>
-                            <Dropdown.Item value="cheapestToExpensive">Cheapest to expensive</Dropdown.Item>
+                            <Dropdown.Item value="cheapestToExpensive" onClick={sortCheapestToExpensive}>Cheapest to expensive</Dropdown.Item>
                             <Dropdown.Item value="expensiveToCheapest">Expensive to cheapest</Dropdown.Item>
                             <Dropdown.Item value="aToZ" >A to Z</Dropdown.Item>
                             <Dropdown.Item value="zToA">Z to A</Dropdown.Item>

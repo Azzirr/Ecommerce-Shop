@@ -2,14 +2,20 @@ import Container  from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
+import { useState } from 'react';
 export default function Products(props){
-    const products = props.products;
+    let products = props.products;
+    let newProducts = props.newProducts
+    const [renderProducts, setRenderProducts] = useState(products);
+    function test(){
+        setRenderProducts(newProducts)
+    }
+    products = newProducts
     return(
         <Container>
-            <Row>
-                {products && <Row className="text-center ms-2 mt-4" variant="light">
-                    {/* <input onChange={productRender} type="text" placeholder='input' ></input> */}
-                    {products.map((product) => (
+            <Row id="try">
+                {renderProducts && <Row className="text-center ms-2 mt-4" variant="light">
+                    {renderProducts.map((product) => (
                         <Col md={4} key={product.id}>
                             <img src={product.image} alt="product" width={200} height={200}></img>
                             <p>{product.title}</p>
@@ -19,6 +25,7 @@ export default function Products(props){
                     ))}
                 </Row>}
             </Row>
+            <button onClick={test}> ELO BENC</button>
         </Container>
     )
 }

@@ -8,28 +8,30 @@ import Footer from './components/Footer';
 import { useEffect, useState } from 'react'
 
 function App() {
-  const [products, setProducts] = useState(null)
+  let [products, setProducts] = useState(null)
+  products = [{"id": 1, "title": "Fjallraven", "price": "50"}, {"id": 2, "title": "Laptop", "price": "500"}]
+  const [newProducts, setNewProducts] = useState(null);
   // Getting all products from API
-  useEffect(() => {
-      fetch(`https://fakestoreapi.com/products/`)
-           .then(response => {
-              if(response.ok){
-                  return response.json()
-              } else {
-                  return Promise.reject(response)
-              }
-           })
-           .then(data => {
-              console.log(data)
-              setProducts(data)
-          })
-           .catch(err => console.log(err))
-  }, []) 
+  // useEffect(() => {
+  //     fetch(`https://fakestoreapi.com/products/`)
+  //          .then(response => {
+  //             if(response.ok){
+  //                 return response.json()
+  //             } else {
+  //                 return Promise.reject(response)
+  //             }
+  //           })
+  //          .then(data => {
+  //             console.log(data)
+  //             setProducts(data)
+  //         })
+  //          .catch(err => console.log(err))
+  // }, [])
   return (
     <Container>
-      <Header products={products}></Header>
+      <Header setNewProducts={setNewProducts}></Header>
       <MainBanner></MainBanner>
-      <Products products={products}></Products>
+      <Products products={products} newProducts={newProducts}></Products>
       <Footer></Footer>
     </Container>
   );
