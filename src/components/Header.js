@@ -10,11 +10,35 @@ import Navbar from 'react-bootstrap/Navbar'
 import logo from '../assets/logo.png'
 import shoppingBag from '../assets/shopping-bag.svg'
 import support from '../assets/support.svg'
+import { useState } from 'react'
 export default function Header(props){
-    function sortCheapestToExpensive(){
-        let products = [{"id": 4, "title": "Test1", "price": "510"}, {"id": 5, "title": "Test2", "price": "333"}]
-        props.setNewProducts(products)
+    let products = props.products;
+    const [searchProduct, setSearchProduct] = useState('')
+    // Sorting functions
+    function sortProducts(event){
+        if(event.target.value === "cheapestToExpensive"){
+            products.sort((a, b) => parseFloat(a.price) - parseFloat(b.price))
+            return props.setNewProducts(products)
+        } else if(event.target.value === "expensiveToCheapest"){
+            products.sort((a, b) => parseFloat(b.price) - parseFloat(a.price))
+            return props.setNewProducts(products)
+        } else if(event.target.value = "aToZ"){
+            products.sort((a, b) => {
+                if(a.title < b.title){
+                    return -1;
+                } else if(a.title > b.title){
+                    return 1;
+                } else {
+                    return 0;
+                }
+            })
+            return props.setNewProducts(products)
+        } else {
+            // CHECK THIS!!!
+            return props.products
+        }
     }
+
     return(
         <Container>
             <Row className='pt'>
@@ -26,13 +50,19 @@ export default function Header(props){
                         <Dropdown.Toggle variant="secondary">
                                 Sort items
                         </Dropdown.Toggle>
-                        <Dropdown.Menu>
-                            <Dropdown.Item value="cheapestToExpensive" onClick={sortCheapestToExpensive}>Cheapest to expensive</Dropdown.Item>
+                        <Dropdown.Menu onChange={sortProducts}>
+                            <Dropdown.Item value="cheapestToExpensive">Cheapest to expensive</Dropdown.Item>
                             <Dropdown.Item value="expensiveToCheapest">Expensive to cheapest</Dropdown.Item>
                             <Dropdown.Item value="aToZ" >A to Z</Dropdown.Item>
                             <Dropdown.Item value="zToA">Z to A</Dropdown.Item>
                         </Dropdown.Menu>
                     </Dropdown>
+                    <select onChange={sortProducts}>
+                        <option value="all">Select...</option>
+                        <option value="cheapestToExpensive">Cheapest to expensive</option>
+                        <option value="expensiveToCheapest">Expensive to cheapest</option>
+                        <option value="aToZ">Sort descending</option>
+                    </select>
                 </Col>
                 <Col md={4} className='pt-3'>
                     <InputGroup>

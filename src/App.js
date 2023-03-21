@@ -9,8 +9,8 @@ import { useEffect, useState } from 'react'
 
 function App() {
   let [products, setProducts] = useState(null)
-  products = [{"id": 1, "title": "Fjallraven", "price": "50"}, {"id": 2, "title": "Laptop", "price": "500"}]
-  const [newProducts, setNewProducts] = useState(null);
+  products = [{"id": 1, "title": "Fjallraven", "price": "50"}, {"id": 2, "title": "Laptop", "price": "500"}, {"id": 3, "title": "Smartphone", "price": "200"}, {"id": 4, "title": "Monitor", "price": "150"}, {"id": 5, "title": "Grizzly bear", "price": "1500"}]
+  const [newProducts, setNewProducts] = useState([{"id": 1, "title": "Fjallraven", "price": "50"}, {"id": 2, "title": "Laptop", "price": "500"}, {"id": 3, "title": "Smartphone", "price": "200"}, {"id": 4, "title": "Monitor", "price": "150"}, {"id": 5, "title": "Grizzly bear", "price": "1500"}]);
   // Getting all products from API
   // useEffect(() => {
   //     fetch(`https://fakestoreapi.com/products/`)
@@ -29,7 +29,7 @@ function App() {
   // }, [])
   return (
     <Container>
-      <Header setNewProducts={setNewProducts}></Header>
+      <Header products={products} setNewProducts={setNewProducts}></Header>
       <MainBanner></MainBanner>
       <Products products={products} newProducts={newProducts}></Products>
       <Footer></Footer>
