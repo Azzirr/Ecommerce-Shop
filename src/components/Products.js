@@ -9,9 +9,9 @@ export default function Products(props){
     return(
         <Container>
             <Row id="try">
-                {props.newProducts && <Row className="text-center ms-2 mt-4" variant="light">
+                {props.newProducts && <Row  md={3} xs={2} className="text-center ms-2 mt-4" variant="light">
                     {props.newProducts.map((product) => (
-                        <Col md={4} key={product.id}>
+                        <Col key={product.id}>
                             <img src={product.image} alt="product" width={200} height={200}></img>
                             <p>{product.title}</p>
                             <p>{product.price} $</p>
