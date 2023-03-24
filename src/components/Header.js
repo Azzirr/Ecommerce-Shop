@@ -7,13 +7,17 @@ import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
+import {Link} from 'react-router-dom';
 import logo from "../assets/logo.png";
 import shoppingBag from "../assets/shopping-bag.svg";
 import support from "../assets/support.svg";
-import { useState } from "react";
+import { useState, useContext } from "react";
+import { CartContext } from "../context/ShoppingCartContext";
 export default function Header(props) {
   let products = props.products;
   const [searchProduct, setSearchProduct] = useState("");
+  const {cartProducts, setCartProducts} = useContext(CartContext);
+  let itemsInCart = cartProducts.length;
   // Sorting functions
   function sortProducts(event) {
     event.preventDefault();
@@ -38,6 +42,10 @@ export default function Header(props) {
       // CHECK THIS!!!
       return props.products;
     }
+  }
+
+  function test(){
+    console.log(cartProducts)
   }
 
   return (
@@ -84,12 +92,9 @@ export default function Header(props) {
           variant="outline-primary"
           className="rounded-circle pt-2 ps-5"
         >
-          <img
-            src={shoppingBag}
-            alt="shopping bag"
-            width={50}
-            height={50}
-          ></img>
+          <Link to="/cart">
+            <img src={shoppingBag} alt="shopping bag" width={50} height={50}></img>
+          </Link>
           <div
             className="rounded-circle bg-danger d-flex justify-content-center align-items-center"
             style={{
@@ -102,7 +107,7 @@ export default function Header(props) {
               transform: "translate(155%, 45%)",
             }}
           >
-            3
+            {itemsInCart}
           </div>
         </Col>
         <Col className="rounded-circle pt-2 ps-5">
@@ -130,6 +135,7 @@ export default function Header(props) {
           </Nav>
         </Navbar>
       </Row>
+      <button onClick={test}> TEST</button>
     </Container>
   );
 }

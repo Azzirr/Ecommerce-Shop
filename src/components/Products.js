@@ -2,10 +2,13 @@ import Container  from 'react-bootstrap/Container'
 import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import { CartContext } from "../context/ShoppingCartContext";
+
 export default function Products(props){
     let products = props.products;
-    console.log(props.newProducts)
+    const {cartProducts, setCartProducts} = useContext(CartContext);
+    // console.log(props.newProducts)
     return(
         <Container>
             <Row id="try">
@@ -15,11 +18,12 @@ export default function Products(props){
                             <img src={product.image} alt="product" width={200} height={200}></img>
                             <p>{product.title}</p>
                             <p>{product.price} $</p>
-                            <Button className="mb-4" variant="success">Add to cart</Button>
+                            <Button className="mb-4" variant="success" onClick={() => setCartProducts(currentProducts => [...currentProducts, product])}>Add to cart</Button>
                         </Col>
                     ))}
                 </Row>}
             </Row>
+            {/* <button onClick={test2}>TEST 2</button> */}
         </Container>
     )
 }

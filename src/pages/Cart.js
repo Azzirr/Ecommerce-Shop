@@ -1,3 +1,6 @@
+
 export default function Cart(){
-    return <h1>Dupa</h1>
+    return(
+        <h1>TEST</h1>
+    )
 }
