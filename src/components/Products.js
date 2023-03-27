@@ -11,7 +11,7 @@ export default function Products(props){
     // console.log(props.newProducts)
     return(
         <Container>
-            <Row id="try">
+            <Row>
                 {props.newProducts && <Row  md={3} xs={2} className="text-center ms-2 mt-4" variant="light">
                     {props.newProducts.map((product) => (
                         <Col key={product.id}>

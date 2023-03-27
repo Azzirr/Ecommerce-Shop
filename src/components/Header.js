@@ -12,11 +12,13 @@ import logo from "../assets/logo.png";
 import shoppingBag from "../assets/shopping-bag.svg";
 import support from "../assets/support.svg";
 import { useState, useContext } from "react";
-import { CartContext } from "../context/ShoppingCartContext";
+import { CartContext, IsOpenContext } from "../context/ShoppingCartContext";
 export default function Header(props) {
   let products = props.products;
   const [searchProduct, setSearchProduct] = useState("");
   const {cartProducts, setCartProducts} = useContext(CartContext);
+  const {isOpen, setIsOpen} = useContext(IsOpenContext);
+  const openCart = () => setIsOpen(true);
   let itemsInCart = cartProducts.length;
   // Sorting functions
   function sortProducts(event) {
@@ -92,9 +94,7 @@ export default function Header(props) {
           variant="outline-primary"
           className="rounded-circle pt-2 ps-5"
         >
-          <Link to="/cart">
-            <img src={shoppingBag} alt="shopping bag" width={50} height={50}></img>
-          </Link>
+          <img src={shoppingBag} alt="shopping bag" width={50} height={50} onClick={openCart} className="cursorPointer"></img>
           <div
             className="rounded-circle bg-danger d-flex justify-content-center align-items-center"
             style={{
