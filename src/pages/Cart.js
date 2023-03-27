@@ -15,7 +15,7 @@ export default function Cart(context){
     let taxesSum = 0;
     if(isOpen === true){
         for(let i = 0; i < cartProducts.length; i++){
-            sum += (cartProducts[i].price).toFixed(2);
+            sum += cartProducts[i].price;
             taxesSum = (cartProducts[i].price * 0.23).toFixed(2)
         }
     }
