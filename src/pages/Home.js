@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import Cart from '../pages/Cart'
 import { useEffect, useState } from 'react';
 import { CartContext, IsOpenContext } from '../context/ShoppingCartContext'
+import Summary from './Summary';
 function Home() {
   let [products, setProducts] = useState(null)
   const [newProducts, setNewProducts] = useState([]);
