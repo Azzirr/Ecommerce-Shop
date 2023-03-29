@@ -5,15 +5,15 @@ import Home from './pages/Home';
 import Cart from './pages/Cart';
 import { Routes, Route } from 'react-router-dom';
 import Summary from './pages/Summary';
+import Help from './pages/Help';
 
 function App() {
   return (
     <Container>
       <Routes>
-        {/* Products is component */}
         <Route path="/" element={<Home/>}></Route>
         <Route path="/summary" element={<Summary/>}></Route>
-        <Route path="/support" element={<Cart/>}></Route>
+        <Route path="/support" element={<Help/>}></Route>
         <Route path="/about-project" element={<Cart/>}></Route>
         <Route path="/other-projects" element={<Cart/>}></Route>
       </Routes>

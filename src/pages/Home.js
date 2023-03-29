@@ -14,6 +14,7 @@ function Home() {
   const [newProducts, setNewProducts] = useState([]);
   const [cartProducts, setCartProducts] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [search, setSearch] = useState("");
 
   // Getting all products from API
   useEffect(() => {
@@ -36,9 +37,9 @@ function Home() {
     <IsOpenContext.Provider value={{isOpen, setIsOpen}}>
       <CartContext.Provider value={{cartProducts, setCartProducts}}>
           <Container>
-            <Header products={products} setNewProducts={setNewProducts}></Header>
+            <Header products={products} setNewProducts={setNewProducts} setSearch={setSearch} search={search}></Header>
             <MainBanner></MainBanner>
-            <Products products={products} newProducts={newProducts}></Products>
+            <Products products={products} newProducts={newProducts} search={search}></Products>
             <Footer></Footer>
             <Cart></Cart>
           </Container>

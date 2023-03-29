@@ -8,7 +8,7 @@ import {Link} from 'react-router-dom';
 export default function Summary(){
     const {state} = useLocation();
     const {cartProducts} = state;
-    const summaryProducts = state.cartProducts;
+    let summaryProducts = state.cartProducts;
     let sum = 0;
     let taxesSum = 0;
     for(let i = 0; i < summaryProducts.length; i++){
@@ -17,7 +17,6 @@ export default function Summary(){
     }
     sum = sum.toFixed(2);
     taxesSum = taxesSum.toFixed(2);
-
     return(
     <Container>
         <Row className="mt-2">
@@ -32,43 +31,57 @@ export default function Summary(){
         </Row>
         <Row  md={3} xs={1} className="text-center ms-2 mt-4" variant="light">
                     {summaryProducts.map((product) => (
-                        <Col key={product.id}>
-                            <img src={product.image} alt="product" width={100} height={100} ></img>
-                            <p>{product.title}</p>
-                            <p>{product.price} $</p>
-                        </Col>
+                        <Row>
+                            <Col key={product.id}>
+                                <img src={product.image} alt="product" width={100} height={100} ></img>
+                                <p>{product.title}</p>
+                                <p>{product.price} $</p>
+                            </Col>
+                        </Row>
                     ))}
         </Row>
-        <Row>
+        <Row className="mt-5">
             <h5>Total price: {sum} $</h5>
             <h5>Including taxes: {taxesSum} $</h5>
-            <h2>Adress</h2>
         </Row>
-        <Row className="mb-2">
-            <Form>
+        <Row className="mb-2  center d-flex align-items-center justify-content-center">
+            <h2 className="text-center">Adress</h2>
+            <Form className="w-50">
                 <Form.Group>
                     <Row>
                     <Col md={6}>
                         <Form.Label>First name</Form.Label>
-                        <Form.Control type="email"></Form.Control>
+                        <Form.Control type="email" maxLength="20"></Form.Control>
                     </Col>
+
                     <Col md={6}>
                         <Form.Label>Second name</Form.Label>
-                        <Form.Control type="email"></Form.Control>
+                        <Form.Control type="email" maxLength="20"></Form.Control>
                     </Col>
                     </Row>
 
                     <Form.Label>E-mail address</Form.Label>
-                    <Form.Control type="email"></Form.Control>
+                    <Form.Control type="email" maxLength="30"></Form.Control>
+
                     <Form.Label>City</Form.Label>
                     <Form.Control type="email"></Form.Control>
-                    <Form.Label>Street and postcode</Form.Label>
-                    <Form.Control type="email"></Form.Control>
-                    <Form.Label>Phonenumber</Form.Label>
-                    <Form.Control type="email"></Form.Control>
-                    <Form.Text className="text-muted">This project is only for educational purposes.</Form.Text>
                     <Row>
-                        <Button variant="success" type="submit">Submit</Button>
+                        <Form.Label>Street and postcode</Form.Label>
+                        <Col>                    
+                            <Form.Control type="number" maxLength="2"></Form.Control>
+                        </Col>
+                            - 
+                        <Col>
+                            <Form.Control type="number" maxLength="3" style={{float: "left"}}></Form.Control>
+                        </Col>
+                    </Row>
+
+                    <Form.Label>Phonenumber</Form.Label>
+                    <Form.Control type="number" maxLength="9"></Form.Control>
+                    
+                    <Form.Text className="text-muted">This project is only for educational purposes. Your data will not be send anywhere.</Form.Text>
+                    <Row>
+                        <Button variant="success">Submit</Button>
                     </Row>
                 </Form.Group>
             </Form>

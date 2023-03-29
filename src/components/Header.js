@@ -15,7 +15,7 @@ import { useState, useContext } from "react";
 import { CartContext, IsOpenContext } from "../context/ShoppingCartContext";
 export default function Header(props) {
   let products = props.products;
-  const [searchProduct, setSearchProduct] = useState("");
+  let search = props.search;
   const {cartProducts, setCartProducts} = useContext(CartContext);
   const {isOpen, setIsOpen} = useContext(IsOpenContext);
   const openCart = () => setIsOpen(true);
@@ -46,10 +46,6 @@ export default function Header(props) {
     }
   }
 
-  function test(){
-    console.log(cartProducts)
-  }
-
   return (
     <Container>
       <Row className="pt">
@@ -77,16 +73,14 @@ export default function Header(props) {
                         <option value="aToZ">Sort descending</option>
                     </select> */}
         </Col>
-        <Col md={4} className="pt-3">
+        <Col md={5} className="pt-3">
           <InputGroup>
             <Form.Control
               placeholder="Search for items..."
               className="offset-1"
+              onChange={(event) => props.setSearch(event.target.value)}
             ></Form.Control>
           </InputGroup>
-        </Col>
-        <Col md={1} className="pt-3">
-          <Button variant="success">SEARCH</Button>
         </Col>
         <Col
           md={1}
@@ -111,7 +105,9 @@ export default function Header(props) {
           </div>
         </Col>
         <Col className="rounded-circle pt-2 ps-5">
-          <img src={support} alt="support" width={50} height={50}></img>
+          <Link to="/support">
+            <img src={support} alt="support" width={50} height={50} className="cursorPointer"></img>
+          </Link>
         </Col>
         <Col md={2} className="pt-3">
           <Dropdown>
@@ -135,7 +131,6 @@ export default function Header(props) {
           </Nav>
         </Navbar>
       </Row>
-      <button onClick={test}> TEST</button>
     </Container>
   );
 }

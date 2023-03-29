@@ -8,7 +8,7 @@ import Row from 'react-bootstrap/Row'
 import Button from 'react-bootstrap/Button';
 export default function Cart(){
     const {isOpen, setIsOpen} = useContext(IsOpenContext);
-    const {cartProducts, setCartProducts} = useContext(CartContext);
+    let {cartProducts, setCartProducts} = useContext(CartContext);
     const closeCart = () => setIsOpen(false);
     const navigate = useNavigate();
 
@@ -18,6 +18,12 @@ export default function Cart(){
         } else {
             alert('Your cart is empty. Please add something, if you want to continue.')
         }
+    }
+
+    const removeFromCart = (parameter) => (event) => {
+        let removeProduct = cartProducts.splice(cartProducts.indexOf(parameter), 1); //returns item i clicked
+        console.log(cartProducts) // returns array without item i clicked
+        setCartProducts(currentProducts => [...currentProducts])
     }
 
     // Count total price
@@ -43,7 +49,7 @@ export default function Cart(){
                             <img src={product.image} alt="product" width={200} height={200}></img>
                             <p>{product.title}</p>
                             <p>{product.price} $</p>
-                            <Button variant="danger">Remove from cart</Button>
+                            <Button variant="danger" onClick={removeFromCart(product)}>Remove from cart</Button>
                         </Col>
                     ))}
                 </Row>

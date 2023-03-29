@@ -9,7 +9,6 @@ import { CartContext } from "../context/ShoppingCartContext";
 export default function Products(props){
     let products = props.products;
     const {cartProducts, setCartProducts} = useContext(CartContext);
-
     //popup
     const [show, setShow] = useState(false);
     const [currentDescription, setCurrentDescription] = useState('');
@@ -47,9 +46,11 @@ export default function Products(props){
             <Row>
                 <h4 className='text-center mt-4'>Click on item to see details</h4>
                 {props.newProducts && <Row  md={3} xs={2} className="text-center ms-2 mt-4" variant="light">
-                    {props.newProducts.map((product) => (
+                    {props.newProducts.filter((item) => {
+                        return props.search.toLowerCase() === '' ? item : item.title.toLowerCase().includes(props.search)
+                    }).map((product) => (
                         <Col key={product.id}>
-                            <img className="cursorPointer" src={product.image} alt="product" width={200} height={200} onClick={showDescription(product.description)}></img>
+                            <img className="cursorPointer" src={product.image} alt={product.title} width={200} height={200} onClick={showDescription(product.description)}></img>
                             <p>{product.title}</p>
                             <p>{product.price} $</p>
                             <Button className="mb-4" variant="success" onClick={() => setCartProducts(currentProducts => [...currentProducts, product])}>Add to cart</Button>
