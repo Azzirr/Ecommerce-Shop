@@ -22,7 +22,6 @@ export default function Header(props) {
   let itemsInCart = cartProducts.length;
   // Sorting functions
   function sortProducts(event) {
-    event.preventDefault();
     if (event.target.value === "cheapestToExpensive") {
       products.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
       return props.setNewProducts(products);
@@ -66,12 +65,12 @@ export default function Header(props) {
               <Dropdown.Item value="zToA">Z to A</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-          {/* <select onChange={sortProducts}>
+          <select onChange={sortProducts}>
                         <option value="all">Select...</option>
                         <option value="cheapestToExpensive">Cheapest to expensive</option>
                         <option value="expensiveToCheapest">Expensive to cheapest</option>
                         <option value="aToZ">Sort descending</option>
-                    </select> */}
+          </select>
         </Col>
         <Col md={5} className="pt-3">
           <InputGroup>
@@ -123,10 +122,11 @@ export default function Header(props) {
       <Row>
         <Navbar expand="sm" bg="light">
           <Nav>
-            <Nav.Link>Men's clothing</Nav.Link>
-            <Nav.Link href="#">Woman's clothing</Nav.Link>
-            <Nav.Link href="#">Electronics</Nav.Link>
-            <Nav.Link href="#">Jewelery</Nav.Link>
+            <Nav.Link onClick={() => props.setFilterByCategory("all")}>All</Nav.Link>
+            <Nav.Link onClick={() => props.setFilterByCategory("men's clothing")}>Men's clothing</Nav.Link>
+            <Nav.Link onClick={() => props.setFilterByCategory("women's clothing")}>Women's clothing</Nav.Link>
+            <Nav.Link onClick={() => props.setFilterByCategory("electronics")}>Electronics</Nav.Link>
+            <Nav.Link onClick={() => props.setFilterByCategory("jewelery")}>Jewelery</Nav.Link>
             <Nav.Link href="#">What's new?</Nav.Link>
           </Nav>
         </Navbar>

@@ -7,18 +7,12 @@ import { useState, useContext } from 'react';
 import { CartContext } from "../context/ShoppingCartContext";
 
 export default function Products(props){
-    let products = props.products;
     const {cartProducts, setCartProducts} = useContext(CartContext);
     //popup
     const [show, setShow] = useState(false);
     const [currentDescription, setCurrentDescription] = useState('');
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-    // function showDescription(product){
-    //     handleShow();
-    //     setCurrentDescription(product.description)
-    // }
-    
     const showDescription = (parameter) => (event) => {
         handleShow();
         setCurrentDescription(parameter)
@@ -36,18 +30,34 @@ export default function Products(props){
             </>
         );
     }
-    
 
-        
+    function showCategoryTitle(){
+        if(props.filterByCategory === '' || 'all'){
+            return(
+                <Row>
+                    <h5>Check our offer!</h5>
+                </Row>
+            )
+        }
+    }
 
     // console.log(props.newProducts)
     return(
         <Container>
             <Row>
                 <h4 className='text-center mt-4'>Click on item to see details</h4>
+                <div onChange={showCategoryTitle}></div>
                 {props.newProducts && <Row  md={3} xs={2} className="text-center ms-2 mt-4" variant="light">
                     {props.newProducts.filter((item) => {
                         return props.search.toLowerCase() === '' ? item : item.title.toLowerCase().includes(props.search)
+                    }).filter((item) => {
+                        if(props.filterByCategory === 'all'){
+                            return item;
+                        } else if(props.filterByCategory === "men's clothing"){
+                            return item.category === "men's clothing"
+                        } else {
+                            return props.filterByCategory === item.category ? item : item.category.includes(props.filterByCategory)
+                        }
                     }).map((product) => (
                         <Col key={product.id}>
                             <img className="cursorPointer" src={product.image} alt={product.title} width={200} height={200} onClick={showDescription(product.description)}></img>

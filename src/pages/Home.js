@@ -8,13 +8,13 @@ import Footer from '../components/Footer';
 import Cart from '../pages/Cart'
 import { useEffect, useState } from 'react';
 import { CartContext, IsOpenContext } from '../context/ShoppingCartContext'
-import Summary from './Summary';
 function Home() {
   let [products, setProducts] = useState(null)
   const [newProducts, setNewProducts] = useState([]);
   const [cartProducts, setCartProducts] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState("");
+  const [filterByCategory, setFilterByCategory] = useState("");
 
   // Getting all products from API
   useEffect(() => {
@@ -37,9 +37,9 @@ function Home() {
     <IsOpenContext.Provider value={{isOpen, setIsOpen}}>
       <CartContext.Provider value={{cartProducts, setCartProducts}}>
           <Container>
-            <Header products={products} setNewProducts={setNewProducts} setSearch={setSearch} search={search}></Header>
+            <Header products={products} setNewProducts={setNewProducts} setSearch={setSearch} search={search} filterByCategory={filterByCategory} setFilterByCategory={setFilterByCategory}></Header>
             <MainBanner></MainBanner>
-            <Products products={products} newProducts={newProducts} search={search}></Products>
+            <Products products={products} newProducts={newProducts} search={search} filterByCategory={filterByCategory} setFilterByCategory={setFilterByCategory}></Products>
             <Footer></Footer>
             <Cart></Cart>
           </Container>
