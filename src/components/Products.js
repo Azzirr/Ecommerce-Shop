@@ -3,7 +3,7 @@ import Row from 'react-bootstrap/Row'
 import Col from 'react-bootstrap/Col'
 import Button from 'react-bootstrap/Button'
 import Modal from 'react-bootstrap/Modal'
-import { useState, useContext } from 'react';
+import { useState, useContext, useRef } from 'react';
 import { CartContext } from "../context/ShoppingCartContext";
 
 export default function Products(props){
@@ -11,6 +11,8 @@ export default function Products(props){
     //popup
     const [show, setShow] = useState(false);
     const [currentDescription, setCurrentDescription] = useState('');
+    // Header change
+    const changeCategoryHeader = useRef('');
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
     const showDescription = (parameter) => (event) => {
@@ -32,21 +34,29 @@ export default function Products(props){
     }
 
     function showCategoryTitle(){
-        if(props.filterByCategory === '' || 'all'){
-            return(
-                <Row>
-                    <h5>Check our offer!</h5>
-                </Row>
-            )
+        if(props.filterByCategory === "men's clothing"){
+            changeCategoryHeader.current.innerText = "Check our men's offer!"
+        } else if (props.filterByCategory === "women's clothing"){
+            changeCategoryHeader.current.innerText = "Check our women's offer!"
+        } else if (props.filterByCategory === "electronics"){
+            changeCategoryHeader.current.innerText = "Powerful electronics!"
+        } else if (props.filterByCategory === "jewelery"){
+            changeCategoryHeader.current.innerText = "Jewelery for everyone!"
+        } else if(props.filterByCategory === ('all' || '')){
+            changeCategoryHeader.current.innerText = "Our offer"
         }
+        //Bug with application when innerText changed and we want to see details of an item
     }
+    showCategoryTitle();
 
     // console.log(props.newProducts)
     return(
         <Container>
             <Row>
                 <h4 className='text-center mt-4'>Click on item to see details</h4>
-                <div onChange={showCategoryTitle}></div>
+                <div>
+                    <h5 type="text" className='text-center' ref={changeCategoryHeader}>Our offer</h5>
+                </div>
                 {props.newProducts && <Row  md={3} xs={2} className="text-center ms-2 mt-4" variant="light">
                     {props.newProducts.filter((item) => {
                         return props.search.toLowerCase() === '' ? item : item.title.toLowerCase().includes(props.search)

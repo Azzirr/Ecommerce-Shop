@@ -37,7 +37,7 @@ function Home() {
     <IsOpenContext.Provider value={{isOpen, setIsOpen}}>
       <CartContext.Provider value={{cartProducts, setCartProducts}}>
           <Container>
-            <Header products={products} setNewProducts={setNewProducts} setSearch={setSearch} search={search} filterByCategory={filterByCategory} setFilterByCategory={setFilterByCategory}></Header>
+            <Header products={products} newProducts={newProducts} setNewProducts={setNewProducts} setSearch={setSearch} search={search} filterByCategory={filterByCategory} setFilterByCategory={setFilterByCategory}></Header>
             <MainBanner></MainBanner>
             <Products products={products} newProducts={newProducts} search={search} filterByCategory={filterByCategory} setFilterByCategory={setFilterByCategory}></Products>
             <Footer></Footer>

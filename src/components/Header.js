@@ -41,12 +41,15 @@ export default function Header(props) {
       return props.setNewProducts(products);
     } else {
       // CHECK THIS!!!
-      return props.products;
+      return products;
     }
   }
-
+  function test(){
+    console.log(props.newProducts)
+  }
   return (
     <Container>
+      <button onClick={test}>TESt</button>
       <Row className="pt">
         <Col md={2}>
           <img src={logo} alt="logo"></img>
@@ -65,12 +68,12 @@ export default function Header(props) {
               <Dropdown.Item value="zToA">Z to A</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-          <select onChange={sortProducts}>
+          {/* <select onChange={sortProducts}>
                         <option value="all">Select...</option>
                         <option value="cheapestToExpensive">Cheapest to expensive</option>
                         <option value="expensiveToCheapest">Expensive to cheapest</option>
                         <option value="aToZ">Sort descending</option>
-          </select>
+          </select> */}
         </Col>
         <Col md={5} className="pt-3">
           <InputGroup>
