@@ -3,7 +3,6 @@ import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Dropdown from "react-bootstrap/Dropdown";
 import InputGroup from "react-bootstrap/InputGroup";
-import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
 import Navbar from "react-bootstrap/Navbar";
@@ -11,11 +10,10 @@ import {Link} from 'react-router-dom';
 import logo from "../assets/logo.png";
 import shoppingBag from "../assets/shopping-bag.svg";
 import support from "../assets/support.svg";
-import { useState, useContext } from "react";
+import { useContext } from "react";
 import { CartContext, IsOpenContext } from "../context/ShoppingCartContext";
 export default function Header(props) {
   let products = props.products;
-  let search = props.search;
   const {cartProducts, setCartProducts} = useContext(CartContext);
   const {isOpen, setIsOpen} = useContext(IsOpenContext);
   const openCart = () => setIsOpen(true);
@@ -45,7 +43,31 @@ export default function Header(props) {
     }
   }
   function test(){
-    console.log(props.newProducts)
+    console.log(props.newProducts);
+    props.setItWhatsNewActive(false);
+  }
+  function navAll(){
+    props.setFilterByCategory("all");
+    props.setItWhatsNewActive(false);
+  }
+  function navMen(){
+    props.setFilterByCategory("men's clothing")
+    props.setItWhatsNewActive(false);
+  }
+  function navWomen(){
+    props.setFilterByCategory("women's clothing")
+    props.setItWhatsNewActive(false);
+  }
+  function navElectronics(){
+    props.setFilterByCategory("electronics")
+    props.setItWhatsNewActive(false);
+  }
+  function navJewelery(){
+    props.setFilterByCategory("jewelery")
+    props.setItWhatsNewActive(false);
+  }
+  function navWhatsNew(){
+    props.setItWhatsNewActive(true);
   }
   return (
     <Container>
@@ -124,13 +146,13 @@ export default function Header(props) {
       </Row>
       <Row>
         <Navbar expand="sm" bg="light">
-          <Nav>
-            <Nav.Link onClick={() => props.setFilterByCategory("all")}>All</Nav.Link>
-            <Nav.Link onClick={() => props.setFilterByCategory("men's clothing")}>Men's clothing</Nav.Link>
-            <Nav.Link onClick={() => props.setFilterByCategory("women's clothing")}>Women's clothing</Nav.Link>
-            <Nav.Link onClick={() => props.setFilterByCategory("electronics")}>Electronics</Nav.Link>
-            <Nav.Link onClick={() => props.setFilterByCategory("jewelery")}>Jewelery</Nav.Link>
-            <Nav.Link href="#">What's new?</Nav.Link>
+          <Nav> 
+            <Nav.Link onClick={navAll}><Link to="/" className="navbarTextDecorationNone">All</Link></Nav.Link>
+            <Nav.Link onClick={navMen}><Link to="/" className="navbarTextDecorationNone">Men's clothing</Link></Nav.Link>
+            <Nav.Link onClick={navWomen}><Link to="/" className="navbarTextDecorationNone">Women's clothing</Link></Nav.Link>
+            <Nav.Link onClick={navElectronics}><Link to="/" className="navbarTextDecorationNone">Electronics</Link></Nav.Link>
+            <Nav.Link onClick={navJewelery}><Link to="/" className="navbarTextDecorationNone">Jewelery</Link></Nav.Link>
+            <Nav.Link onClick={navWhatsNew}><Link to="/whats-new" className="navbarTextDecorationNone">What's new?</Link></Nav.Link>
           </Nav>
         </Navbar>
       </Row>

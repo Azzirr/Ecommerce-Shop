@@ -40,3 +40,10 @@
 .cursorPointer:hover{
   cursor: pointer;
 }
+.navbarTextDecorationNone{
+  text-decoration: none;
+  color: rgb(0, 0, 0);
+}
+.navbarTextDecorationNone:focus{
+  color: rgb(222, 24, 24);
+}

@@ -55,7 +55,7 @@ export default function Products(props){
             <Row>
                 <h4 className='text-center mt-4'>Click on item to see details</h4>
                 <div>
-                    <h5 type="text" className='text-center' ref={changeCategoryHeader}>Our offer</h5>
+                    <h5 type="text" className='text-center bg-light' ref={changeCategoryHeader}>Our offer</h5>
                 </div>
                 {props.newProducts && <Row  md={3} xs={2} className="text-center ms-2 mt-4" variant="light">
                     {props.newProducts.filter((item) => {

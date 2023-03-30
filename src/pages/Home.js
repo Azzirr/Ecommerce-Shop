@@ -8,6 +8,7 @@ import Footer from '../components/Footer';
 import Cart from '../pages/Cart'
 import { useEffect, useState } from 'react';
 import { CartContext, IsOpenContext } from '../context/ShoppingCartContext'
+import { Outlet } from 'react-router-dom';
 function Home() {
   let [products, setProducts] = useState(null)
   const [newProducts, setNewProducts] = useState([]);
@@ -15,7 +16,7 @@ function Home() {
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [filterByCategory, setFilterByCategory] = useState("");
-
+  const [isWhatsNewActive, setItWhatsNewActive] = useState(false);
   // Getting all products from API
   useEffect(() => {
       fetch(`https://fakestoreapi.com/products/`)
@@ -37,8 +38,8 @@ function Home() {
     <IsOpenContext.Provider value={{isOpen, setIsOpen}}>
       <CartContext.Provider value={{cartProducts, setCartProducts}}>
           <Container>
-            <Header products={products} newProducts={newProducts} setNewProducts={setNewProducts} setSearch={setSearch} search={search} filterByCategory={filterByCategory} setFilterByCategory={setFilterByCategory}></Header>
-            <MainBanner></MainBanner>
+            <Header products={products} newProducts={newProducts} setNewProducts={setNewProducts} setSearch={setSearch} search={search} filterByCategory={filterByCategory} setFilterByCategory={setFilterByCategory}setItWhatsNewActive={setItWhatsNewActive}></Header>
+            {isWhatsNewActive ? (<Outlet></Outlet>) : (<MainBanner></MainBanner>)}
             <Products products={products} newProducts={newProducts} search={search} filterByCategory={filterByCategory} setFilterByCategory={setFilterByCategory}></Products>
             <Footer></Footer>
             <Cart></Cart>

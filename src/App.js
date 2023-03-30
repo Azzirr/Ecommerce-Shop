@@ -6,12 +6,15 @@ import Cart from './pages/Cart';
 import { Routes, Route } from 'react-router-dom';
 import Summary from './pages/Summary';
 import Help from './pages/Help';
+import WhatsNew from './pages/WhatsNew';
 
 function App() {
   return (
     <Container>
       <Routes>
-        <Route path="/" element={<Home/>}></Route>
+        <Route path="/" element={<Home/>}>
+          <Route path="whats-new" element={<WhatsNew/>}></Route>
+        </Route>
         <Route path="/summary" element={<Summary/>}></Route>
         <Route path="/support" element={<Help/>}></Route>
         <Route path="/about-project" element={<Cart/>}></Route>
