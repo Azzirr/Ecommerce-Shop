@@ -12,6 +12,7 @@ import shoppingBag from "../assets/shopping-bag.svg";
 import support from "../assets/support.svg";
 import { useContext } from "react";
 import { CartContext, IsOpenContext } from "../context/ShoppingCartContext";
+import Button from "react-bootstrap/esm/Button";
 export default function Header(props) {
   let products = props.products;
   const {cartProducts, setCartProducts} = useContext(CartContext);
@@ -65,6 +66,13 @@ export default function Header(props) {
   }
   function navWhatsNew(){
     props.setItWhatsNewActive(true);
+  }
+  function showLoginComponent(){
+    if(props.isLoginActive === false){
+      props.setIsLoginActive(true);
+    } else {
+      props.setIsLoginActive(false)
+    }
   }
 
   return (
@@ -132,12 +140,7 @@ export default function Header(props) {
           </Link>
         </Col>
         <Col md={2} className="pt-3">
-          <Dropdown>
-            <Dropdown.Toggle variant="success">Open Menu</Dropdown.Toggle>
-            <Dropdown.Menu>
-              <Dropdown.Item href="#">LOGIN</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
+          <Button variant="success" onClick={showLoginComponent}>LOGIN</Button>
         </Col>
       </Row>
       <Row>

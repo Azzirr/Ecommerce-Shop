@@ -57,7 +57,7 @@ export default function Products(props){
                 <div>
                     <h5 type="text" className='text-center bg-light' ref={changeCategoryHeader}>Our offer</h5>
                 </div>
-                {props.newProducts && <Row  md={3} xs={2} className="text-center ms-2 mt-4" variant="light">
+                {props.newProducts && <Row  md={3} xs={1} className="text-center ms-2 mt-4" variant="light">
                     {props.newProducts.filter((item) => {
                         return props.search.toLowerCase() === '' ? item : item.title.toLowerCase().includes(props.search)
                     }).filter((item) => {

@@ -3,6 +3,7 @@ import Row from "react-bootstrap/Row";
 import Carousel from "react-bootstrap/Carousel";
 import placeholder_photo from "../assets/placeholder1.svg"
 import placeholder_photo2 from "../assets/placeholder2.svg"
+import LoginForm from "./LoginForm";
 export default function MainBanner() {
   return (
     <Container>
