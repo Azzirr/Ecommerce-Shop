@@ -7,6 +7,7 @@ import { Routes, Route } from 'react-router-dom';
 import Summary from './pages/Summary';
 import Help from './pages/Help';
 import WhatsNew from './pages/WhatsNew';
+import NotFound from './pages/NotFound';
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
         <Route path="/support" element={<Help/>}></Route>
         <Route path="/about-project" element={<Cart/>}></Route>
         <Route path="/other-projects" element={<Cart/>}></Route>
+        <Route path="*" element={<NotFound/>}></Route> 
       </Routes>
     </Container>
   );

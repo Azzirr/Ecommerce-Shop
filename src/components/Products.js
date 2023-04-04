@@ -47,7 +47,7 @@ export default function Products(props){
         }
         //Bug with application when innerText changed and we want to see details of an item
     }
-    showCategoryTitle();
+   // showCategoryTitle();
 
     // console.log(props.newProducts)
     return(

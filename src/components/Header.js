@@ -37,14 +37,11 @@ export default function Header(props) {
         }
       });
       return props.setNewProducts(products);
-    } else {
-      // CHECK THIS!!!
-      return products;
     }
   }
   function test(){
     console.log(props.newProducts);
-    props.setItWhatsNewActive(false);
+    return props.newProducts
   }
   function navAll(){
     props.setFilterByCategory("all");
@@ -69,6 +66,7 @@ export default function Header(props) {
   function navWhatsNew(){
     props.setItWhatsNewActive(true);
   }
+
   return (
     <Container>
       <button onClick={test}>TESt</button>
@@ -79,7 +77,7 @@ export default function Header(props) {
         <Col md={1} className="pt-3">
           <Dropdown>
             <Dropdown.Toggle variant="secondary">Sort items</Dropdown.Toggle>
-            <Dropdown.Menu onChange={sortProducts}>
+            <Dropdown.Menu>
               <Dropdown.Item value="cheapestToExpensive">
                 Cheapest to expensive
               </Dropdown.Item>
@@ -90,7 +88,7 @@ export default function Header(props) {
               <Dropdown.Item value="zToA">Z to A</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
-          {/* <select onChange={sortProducts}>
+          {/* <select onChange={sortProducts} >
                         <option value="all">Select...</option>
                         <option value="cheapestToExpensive">Cheapest to expensive</option>
                         <option value="expensiveToCheapest">Expensive to cheapest</option>
@@ -138,8 +136,6 @@ export default function Header(props) {
             <Dropdown.Toggle variant="success">Open Menu</Dropdown.Toggle>
             <Dropdown.Menu>
               <Dropdown.Item href="#">LOGIN</Dropdown.Item>
-              <Dropdown.Item href="#">Setting 2</Dropdown.Item>
-              <Dropdown.Item href="#">Setting 3</Dropdown.Item>
             </Dropdown.Menu>
           </Dropdown>
         </Col>
@@ -147,12 +143,12 @@ export default function Header(props) {
       <Row>
         <Navbar expand="sm" bg="light">
           <Nav> 
-            <Nav.Link onClick={navAll}><Link to="/" className="navbarTextDecorationNone">All</Link></Nav.Link>
-            <Nav.Link onClick={navMen}><Link to="/" className="navbarTextDecorationNone">Men's clothing</Link></Nav.Link>
-            <Nav.Link onClick={navWomen}><Link to="/" className="navbarTextDecorationNone">Women's clothing</Link></Nav.Link>
-            <Nav.Link onClick={navElectronics}><Link to="/" className="navbarTextDecorationNone">Electronics</Link></Nav.Link>
-            <Nav.Link onClick={navJewelery}><Link to="/" className="navbarTextDecorationNone">Jewelery</Link></Nav.Link>
-            <Nav.Link onClick={navWhatsNew}><Link to="/whats-new" className="navbarTextDecorationNone">What's new?</Link></Nav.Link>
+            <Nav.Link as={Link} to="/" onClick={navAll} className="navbarTextDecorationNone">All</Nav.Link>
+            <Nav.Link as={Link} to="/" onClick={navMen} className="navbarTextDecorationNone">Men's clothing</Nav.Link>
+            <Nav.Link as={Link} to="/" onClick={navWomen} className="navbarTextDecorationNone">Women's clothing</Nav.Link>
+            <Nav.Link as={Link} to="/" onClick={navElectronics} className="navbarTextDecorationNone">Electronics</Nav.Link>
+            <Nav.Link as={Link} to="/" onClick={navJewelery} className="navbarTextDecorationNone">Jewelery</Nav.Link>
+            <Nav.Link as={Link} to="/whats-new" onClick={navWhatsNew} className="navbarTextDecorationNone">What's new?</Nav.Link>
           </Nav>
         </Navbar>
       </Row>
