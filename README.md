@@ -3,6 +3,9 @@
 This project is my attempt to create an simulation of e-commerce shop. There is a list of products (fetched from public Rest API), which you can add to cart, remove from cart, filter by category, sort by price, search by text and much more.
 
 ## Here's the live demo: [LINK]
+https://azzirr.github.io/Ecommerce-Shop/
+
+(There is still a bug with paths, so just click home button. I will fix that soon)
 
 ## To run this project locally
 
