@@ -6,7 +6,7 @@ import Row from "react-bootstrap/esm/Row";
 import { useRef, useState, useEffect, useContext } from "react";
 import AuthenticationContext from "../context/AuthenticationContext";
 import axios from '../login api/axios';
-const LOGIN_URL = '/authentication';
+const LOGIN_URL = '/users';
 
 export default function LoginForm() {
   const { setAuthentication } = useContext(AuthenticationContext);
@@ -30,8 +30,8 @@ export default function LoginForm() {
 
     try {
         const response = await axios.post(LOGIN_URL, 
-            JSON.stringify({user, password}), {
-                headers: { 'Content-Type': 'application/json'},
+            JSON.stringify({username: user, password: password}), {
+                headers: { 'Content-Type': 'application/json', },
                 withCredentials: true
             }
         );
@@ -57,7 +57,6 @@ export default function LoginForm() {
 
 
   };
-
   return (
     <Container style={{ float: "right" }}>
       <Row>
@@ -77,9 +76,9 @@ export default function LoginForm() {
                 <Row>
                   <p
                     ref={errorRef}
-                    className={errorMessage ? "errormessage" : "offscreen"}
                     aria-live="assertive"
-                  ></p>
+                    className="text-danger"
+                  >{errorMessage}</p>
                 </Row>
                 <Form.Group
                   className="mb-3"

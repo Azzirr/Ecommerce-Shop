@@ -77,7 +77,6 @@ export default function Header(props) {
 
   return (
     <Container>
-      <button onClick={test}>TESt</button>
       <Row className="pt">
         <Col md={2}>
           <img src={logo} alt="logo"></img>
