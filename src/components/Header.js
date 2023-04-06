@@ -1,7 +1,6 @@
 import Container from "react-bootstrap/Container";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
-import Dropdown from "react-bootstrap/Dropdown";
 import InputGroup from "react-bootstrap/InputGroup";
 import Form from "react-bootstrap/Form";
 import Nav from "react-bootstrap/Nav";
@@ -14,21 +13,21 @@ import { useContext } from "react";
 import { CartContext, IsOpenContext } from "../context/ShoppingCartContext";
 import Button from "react-bootstrap/esm/Button";
 export default function Header(props) {
-  let products = props.products;
-  const {cartProducts, setCartProducts} = useContext(CartContext);
-  const {isOpen, setIsOpen} = useContext(IsOpenContext);
+  const { cartProducts } = useContext(CartContext);
+  const { setIsOpen} = useContext(IsOpenContext);
   const openCart = () => setIsOpen(true);
   let itemsInCart = cartProducts.length;
   // Sorting functions
   function sortProducts(event) {
+    const newArr = [...props.newProducts]
     if (event.target.value === "cheapestToExpensive") {
-      products.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
-      return props.setNewProducts(products);
+      newArr.sort((a, b) => parseFloat(a.price) - parseFloat(b.price));
+      return props.setNewProducts(newArr);
     } else if (event.target.value === "expensiveToCheapest") {
-      products.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
-      return props.setNewProducts(products);
+      newArr.sort((a, b) => parseFloat(b.price) - parseFloat(a.price));
+      return props.setNewProducts(newArr);
     } else if ((event.target.value = "aToZ")) {
-      products.sort((a, b) => {
+      newArr.sort((a, b) => {
         if (a.title < b.title) {
           return -1;
         } else if (a.title > b.title) {
@@ -37,13 +36,10 @@ export default function Header(props) {
           return 0;
         }
       });
-      return props.setNewProducts(products);
+      return props.setNewProducts(newArr);
     }
   }
-  function test(){
-    console.log(props.newProducts);
-    return props.newProducts
-  }
+
   function navAll(){
     props.setFilterByCategory("all");
     props.setItWhatsNewActive(false);
@@ -81,28 +77,15 @@ export default function Header(props) {
         <Col md={2}>
           <img src={logo} alt="logo"></img>
         </Col>
-        <Col md={1} className="pt-3">
-          <Dropdown>
-            <Dropdown.Toggle variant="secondary">Sort items</Dropdown.Toggle>
-            <Dropdown.Menu>
-              <Dropdown.Item value="cheapestToExpensive">
-                Cheapest to expensive
-              </Dropdown.Item>
-              <Dropdown.Item value="expensiveToCheapest">
-                Expensive to cheapest
-              </Dropdown.Item>
-              <Dropdown.Item value="aToZ">A to Z</Dropdown.Item>
-              <Dropdown.Item value="zToA">Z to A</Dropdown.Item>
-            </Dropdown.Menu>
-          </Dropdown>
-          {/* <select onChange={sortProducts} >
-                        <option value="all">Select...</option>
-                        <option value="cheapestToExpensive">Cheapest to expensive</option>
-                        <option value="expensiveToCheapest">Expensive to cheapest</option>
-                        <option value="aToZ">Sort descending</option>
-          </select> */}
+        <Col md={2} className="pt-3">
+        <select onChange={sortProducts} className="form-control">
+          <option value="all">Select...</option>
+          <option value="cheapestToExpensive">Cheapest to expensive</option>
+          <option value="expensiveToCheapest">Expensive to cheapest</option>
+          <option value="aToZ">Sort descending</option>
+        </select>
         </Col>
-        <Col md={5} className="pt-3">
+        <Col md={4} className="pt-3">
           <InputGroup>
             <Form.Control
               placeholder="Search for items..."

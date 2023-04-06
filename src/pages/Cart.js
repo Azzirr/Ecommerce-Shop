@@ -21,7 +21,7 @@ export default function Cart(){
     }
 
     const removeFromCart = (parameter) => (event) => {
-        let removeProduct = cartProducts.splice(cartProducts.indexOf(parameter), 1); //returns item i clicked
+        cartProducts.splice(cartProducts.indexOf(parameter), 1); //returns item i clicked
         console.log(cartProducts) // returns array without item i clicked
         setCartProducts(currentProducts => [...currentProducts])
     }

@@ -11,7 +11,6 @@ import { CartContext, IsOpenContext } from '../context/ShoppingCartContext'
 import { Outlet } from 'react-router-dom';
 import LoginForm from '../components/LoginForm';
 function Home() {
-  let [products, setProducts] = useState(null)
   const [newProducts, setNewProducts] = useState([]);
   const [cartProducts, setCartProducts] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
@@ -31,7 +30,6 @@ function Home() {
             })
            .then(data => {
               console.log(data)
-              setProducts(data)
               setNewProducts(data);
           })
            .catch(err => console.log(err))
@@ -40,10 +38,10 @@ function Home() {
     <IsOpenContext.Provider value={{isOpen, setIsOpen}}>
       <CartContext.Provider value={{cartProducts, setCartProducts}}>
           <Container>
-            <Header products={products} newProducts={newProducts} setNewProducts={setNewProducts} setSearch={setSearch} search={search} filterByCategory={filterByCategory} setFilterByCategory={setFilterByCategory} setItWhatsNewActive={setItWhatsNewActive}  setIsLoginActive={setIsLoginActive} isLoginActive={isLoginActive}></Header>
+            <Header newProducts={newProducts} setNewProducts={setNewProducts} setSearch={setSearch} search={search} filterByCategory={filterByCategory} setFilterByCategory={setFilterByCategory} setItWhatsNewActive={setItWhatsNewActive}  setIsLoginActive={setIsLoginActive} isLoginActive={isLoginActive}></Header>
             {isLoginActive ? (<LoginForm></LoginForm>) : null}
             {isWhatsNewActive ? (<Outlet></Outlet>) : (<MainBanner></MainBanner>)}
-            <Products products={products} newProducts={newProducts} search={search} filterByCategory={filterByCategory} setFilterByCategory={setFilterByCategory}></Products>
+            <Products newProducts={newProducts} search={search} filterByCategory={filterByCategory} setFilterByCategory={setFilterByCategory}></Products>
             <Footer></Footer>
             <Cart></Cart>
           </Container>
