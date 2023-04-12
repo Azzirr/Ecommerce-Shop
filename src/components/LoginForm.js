@@ -32,15 +32,13 @@ export default function LoginForm() {
         const response = await axios.post(LOGIN_URL, 
             JSON.stringify({username: user, password: password}), {
                 headers: { 'Content-Type': 'application/json', },
-                withCredentials: true
+                withCredentials: false
             }
         );
-        console.log(JSON.stringify(response?.data));
+        console.log(response);
         const accessToken = response?.data?.accessToken;
         const roles = response?.data?.roles;
         setAuthentication({user, password, roles, accessToken})
-        setUser("");
-        setPassword("");
         setSuccess(true);
     } catch (error) {
         if(!error?.response){
@@ -69,7 +67,7 @@ export default function LoginForm() {
           <>
             {success ? (
               <Row>
-                <h1>You are logged in!</h1>
+                <h1>You are logged in {user}!</h1>
               </Row>
             ) : (
               <Form onSubmit={handleSubmit}>

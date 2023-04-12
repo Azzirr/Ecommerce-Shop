@@ -17,6 +17,7 @@ export default function Summary(){
     }
     sum = sum.toFixed(2);
     taxesSum = taxesSum.toFixed(2);
+
     return(
     <Container>
         <Row className="mt-2">
@@ -51,12 +52,12 @@ export default function Summary(){
                     <Row>
                     <Col md={6}>
                         <Form.Label>First name</Form.Label>
-                        <Form.Control type="email" maxLength="20"></Form.Control>
+                        <Form.Control type="text" maxLength="20"></Form.Control>
                     </Col>
 
                     <Col md={6}>
-                        <Form.Label>Second name</Form.Label>
-                        <Form.Control type="email" maxLength="20"></Form.Control>
+                        <Form.Label>Second name</Form.Label>types
+                        <Form.Control type="text" maxLength="20"></Form.Control>
                     </Col>
                     </Row>
 
@@ -64,7 +65,7 @@ export default function Summary(){
                     <Form.Control type="email" maxLength="30"></Form.Control>
 
                     <Form.Label>City</Form.Label>
-                    <Form.Control type="email"></Form.Control>
+                    <Form.Control type="text" maxLength="30"></Form.Control>
                     <Row>
                         <Form.Label>Street and postcode</Form.Label>
                         <Col>                    
@@ -77,7 +78,7 @@ export default function Summary(){
                     </Row>
 
                     <Form.Label>Phonenumber</Form.Label>
-                    <Form.Control type="number" maxLength="9"></Form.Control>
+                    <Form.Control type="tel" maxLength="9"></Form.Control>
                     
                     <Form.Text className="text-muted">This project is only for educational purposes. Your data will not be send anywhere.</Form.Text>
                     <Row>
