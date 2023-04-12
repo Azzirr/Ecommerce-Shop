@@ -69,3 +69,15 @@ input::-webkit-inner-spin-button {
 input[type=number] {
     -moz-appearance:textfield; /* Firefox */
 }
+.error{
+  font-size: 10px;
+  color:rgb(222, 24, 24);
+  display: none;
+}
+
+input:invalid[focus="true"] ~ .error{
+  display: block;
+}
+input:invalid[focus="true"]{
+  border: 1px solid red;
+}
