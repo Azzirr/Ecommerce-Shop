@@ -11,13 +11,20 @@ import { CartContext, IsOpenContext } from '../context/ShoppingCartContext'
 import { Outlet } from 'react-router-dom';
 import LoginForm from '../components/LoginForm';
 function Home() {
+  const cartProductsFromLocalStorage = JSON.parse(localStorage.getItem('cartProducts') || '[]');
   const [newProducts, setNewProducts] = useState([]);
-  const [cartProducts, setCartProducts] = useState([]);
+  const [cartProducts, setCartProducts] = useState(cartProductsFromLocalStorage);
   const [isOpen, setIsOpen] = useState(false);
   const [search, setSearch] = useState("");
   const [filterByCategory, setFilterByCategory] = useState("");
   const [isWhatsNewActive, setItWhatsNewActive] = useState(false);
   const [isLoginActive, setIsLoginActive] = useState(false);
+
+  // Local memory save
+  useEffect(() => {
+    localStorage.setItem('cartProducts', JSON.stringify(cartProducts))
+  }, [cartProducts])
+
   // Getting all products from API
   useEffect(() => {
       fetch(`https://fakestoreapi.com/products/`)

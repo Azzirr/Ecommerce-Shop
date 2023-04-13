@@ -8,7 +8,6 @@ import {Link} from 'react-router-dom';
 import { useState } from "react";
 export default function Summary(){
     const {state} = useLocation();
-    const {cartProducts} = state;
     let summaryProducts = state.cartProducts;
     let sum = 0;
     let taxesSum = 0;
@@ -68,10 +67,6 @@ export default function Summary(){
     }
 
 
-    function validateForm(){
-    }
-
-
     return(
     <Container>
         <Row className="mt-2">
@@ -86,7 +81,7 @@ export default function Summary(){
         </Row>
         <Row  md={3} xs={1} className="text-center ms-2 mt-4" variant="light">
                     {summaryProducts.map((product) => (
-                        <Row>
+                        <Row key={product.id}>
                             <Col key={product.id}>
                                 <img src={product.image} alt="product" width={100} height={100}></img>
                                 <p>{product.title}</p>
@@ -101,7 +96,7 @@ export default function Summary(){
         </Row>
         <Row className="mb-2  center d-flex align-items-center justify-content-center">
             <h2 className="text-center">Adress</h2>
-            <Form className="w-50">
+            <Form className="w-50" action="/thanks">
                 <Form.Group>
                     <Row>
                     <Col md={6}>
@@ -154,7 +149,7 @@ export default function Summary(){
                     
                     <Form.Text className="text-muted">This project is only for educational purposes. Your data will not be send anywhere.</Form.Text>
                     <Row>
-                        <Button variant="success" onClick={validateForm}>Submit</Button>
+                        <Button variant="success" type="submit" onClick={() => localStorage.clear()}>Submit</Button>
                     </Row>
                 </Form.Group>
             </Form>
