@@ -10,6 +10,7 @@ import WhatsNew from './pages/WhatsNew';
 import NotFound from './pages/NotFound';
 import Thanks from './pages/Thanks';
 import AboutProject from './pages/AboutProject';
+import IssueAccepted from './pages/IssueAccepted';
 
 function App() {
   return (
@@ -23,6 +24,7 @@ function App() {
         <Route path="/other-projects" element={<Cart/>}></Route>
         <Route path="/thanks" element={<Thanks/>}></Route>
         <Route path="/about-project" element={<AboutProject/>}></Route>
+        <Route path="issue-accepted" element={<IssueAccepted/>}></Route>
         <Route path="*" element={<NotFound/>}></Route> 
       </Routes>
     </Container>

@@ -67,7 +67,7 @@ export default function LoginForm() {
           <>
             {success ? (
               <Row>
-                <h1>You are logged in {user}!</h1>
+                <h1>You are logged in, {user}!</h1>
               </Row>
             ) : (
               <Form onSubmit={handleSubmit}>
@@ -93,7 +93,7 @@ export default function LoginForm() {
                     required
                   />
                   <Form.Text className="text-muted">
-                    We'll never share your email with anyone else.
+                    We'll never share your data with anyone else.
                   </Form.Text>
                 </Form.Group>
 
