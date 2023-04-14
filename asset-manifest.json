@@ -1,21 +1,22 @@
 {
   "files": {
     "main.css": "/Ecommerce-Shop/static/css/main.a97978f9.css",
-    "main.js": "/Ecommerce-Shop/static/js/main.bc9f193d.js",
+    "main.js": "/Ecommerce-Shop/static/js/main.377bcae9.js",
     "static/js/787.23456d98.chunk.js": "/Ecommerce-Shop/static/js/787.23456d98.chunk.js",
     "static/media/pexels-nataliya-vaitkevich-freetousephoto.jpg": "/Ecommerce-Shop/static/media/pexels-nataliya-vaitkevich-freetousephoto.0f441e6da436b7e75161.jpg",
+    "static/media/pexels-karolina-grabowska-5632371.jpg": "/Ecommerce-Shop/static/media/pexels-karolina-grabowska-5632371.64ad9cf919bd9689c132.jpg",
+    "static/media/pexels-karolina-grabowska-4464822.jpg": "/Ecommerce-Shop/static/media/pexels-karolina-grabowska-4464822.4315feec6e34770c2d55.jpg",
+    "static/media/pexels-karolina-grabowska-5632360.jpg": "/Ecommerce-Shop/static/media/pexels-karolina-grabowska-5632360.51c003abc77943824d64.jpg",
     "static/media/PlatformGamePrototype.png": "/Ecommerce-Shop/static/media/PlatformGamePrototype.42c54cd07861ef8b45d9.png",
-    "static/media/placeholder1.svg": "/Ecommerce-Shop/static/media/placeholder1.c31dadaf6d77dc99f08c9776934a8cc6.svg",
-    "static/media/placeholder2.svg": "/Ecommerce-Shop/static/media/placeholder2.8ceae1a0074e8d8782233abbf4f361a1.svg",
     "static/media/shopping-bag.svg": "/Ecommerce-Shop/static/media/shopping-bag.858c621b449e35f5793008e15b6d70dd.svg",
     "static/media/support.svg": "/Ecommerce-Shop/static/media/support.32d813424a21aebe88c79a87d11c2387.svg",
     "index.html": "/Ecommerce-Shop/index.html",
     "main.a97978f9.css.map": "/Ecommerce-Shop/static/css/main.a97978f9.css.map",
-    "main.bc9f193d.js.map": "/Ecommerce-Shop/static/js/main.bc9f193d.js.map",
+    "main.377bcae9.js.map": "/Ecommerce-Shop/static/js/main.377bcae9.js.map",
     "787.23456d98.chunk.js.map": "/Ecommerce-Shop/static/js/787.23456d98.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.a97978f9.css",
-    "static/js/main.bc9f193d.js"
+    "static/js/main.377bcae9.js"
   ]
 }
