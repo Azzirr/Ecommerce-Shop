@@ -14,9 +14,6 @@ export default function NotFound(){
                 </Col>
             </Row>
             <Link to="/"><Button>Back to homepage</Button></Link>
-            <Row>
-                <small style={{color: "red"}}>I have some issues with routing on deploy. Just click "Back to homepage" and you will be taken to main page. I will fix that soon.</small>
-            </Row>
         </Container>
     )
 }
